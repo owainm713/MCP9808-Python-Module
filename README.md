@@ -20,18 +20,18 @@ For testing of the Alert/Interrupt capabilities I used a
 LED between Alert & Gnd.
 
 Current functions include:
--read_temperature()
--set_t_critical(temperature)
--set_t_upper(temperature)
--set_t_lower(temperature)
--set_resolution(res = 0.0625)
--set_hysteresis(hys = 0)
--set_shutdown(mode=True)
--set_critical_lock(critLock = True)
--set_window_lock(winLock = True)
--set_alerts(control = True, select = "all", polarity = "low", mode = "comparator")
--get_alerts()
--clear_interrupt()
+- read_temperature()
+- set_t_critical(temperature)
+- set_t_upper(temperature)
+- set_t_lower(temperature)
+- set_resolution(res = 0.0625)
+- set_hysteresis(hys = 0)
+- set_shutdown(mode=True)
+- set_critical_lock(critLock = True)
+- set_window_lock(winLock = True)
+- set_alerts(control = True, select = "all", polarity = "low", mode = "comparator")
+- get_alerts()
+- clear_interrupt()
 
 For information on how the sensor works check out the datasheet, It has good explanations for
 the sensor hysteresis, how the different alerts work, comparator vs interrupt, Tupper vs Tcritcal
