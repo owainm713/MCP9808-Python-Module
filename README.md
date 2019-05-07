@@ -41,3 +41,12 @@ Note:
 If you set either the critical lock which makes Tcritcal unchangable, or the window lock which
 makes Tupper and Tlower unchangable, those items can not be unlocked without a power on reset,
 which I found required grounding the Vdd pin (after removing the 3.3V source of course).
+
+get_alerts() returns 2 numbers, the first is comprised of 3 bits: 
+- bit 2 Ta vs Tcrictal - 0 when Ta <Tcritical, 1 when Ta >= Tcritical
+- bit 1 Ta vs Tupper - 0 when Ta <Tupper, 1 when Ta >= Tupper
+- bit 0, Ta vs Tlower - 0 when Ta >= Tlower, 1 when Ta < Tlower
+
+the second number is a single bit number containing the alert Status 
+- 0 - alert output not asserted 
+- 1 - alert output asserted
