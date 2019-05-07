@@ -20,18 +20,18 @@ For testing of the Alert/Interrupt capabilities I used a
 LED between Alert & Gnd.
 
 Current functions include:
--read_temperature()
--set_t_critical(temperature)
--set_t_upper(temperature)
--set_t_lower(temperature)
--set_resolution(res = 0.0625)
--set_hysteresis(hys = 0)
--set_shutdown(mode=True)
--set_critical_lock(critLock = True)
--set_window_lock(winLock = True)
--set_alerts(control = True, select = "all", polarity = "low", mode = "comparator")
--get_alerts()
--clear_interrupt()
+- read_temperature()
+- set_t_critical(temperature)
+- set_t_upper(temperature)
+- set_t_lower(temperature)
+- set_resolution(res = 0.0625)
+- set_hysteresis(hys = 0)
+- set_shutdown(mode=True)
+- set_critical_lock(critLock = True)
+- set_window_lock(winLock = True)
+- set_alerts(control = True, select = "all", polarity = "low", mode = "comparator")
+- get_alerts()
+- clear_interrupt()
 
 For information on how the sensor works check out the datasheet, It has good explanations for
 the sensor hysteresis, how the different alerts work, comparator vs interrupt, Tupper vs Tcritcal
@@ -41,3 +41,12 @@ Note:
 If you set either the critical lock which makes Tcritcal unchangable, or the window lock which
 makes Tupper and Tlower unchangable, those items can not be unlocked without a power on reset,
 which I found required grounding the Vdd pin (after removing the 3.3V source of course).
+
+get_alerts() returns 2 numbers, the first is comprised of 3 bits: 
+- bit 2 Ta vs Tcrictal - 0 when Ta <Tcritical, 1 when Ta >= Tcritical
+- bit 1 Ta vs Tupper - 0 when Ta <Tupper, 1 when Ta >= Tupper
+- bit 0, Ta vs Tlower - 0 when Ta >= Tlower, 1 when Ta < Tlower
+
+the second number is a single bit number containing the alert Status 
+- 0 - alert output not asserted 
+- 1 - alert output asserted
